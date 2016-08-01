@@ -22,6 +22,7 @@ class NotifierTest(unittest.TestCase):
     def test_missing_body_parameter(self):
         rv = self.app.post('/notify/twitter', data=json.dumps(dict(to='rob@robspencer.me.uk')), content_type="application/json")
         self.assertEqual(rv.status_code, 400)
+
     def test_bad_method(self):
         rv = self.app.get('/notify/twitter', content_type="application/json")
         print rv.data
