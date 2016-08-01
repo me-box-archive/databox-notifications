@@ -16,8 +16,6 @@ try:
 except ImportError:
     flags = None
 
-# If modifying these scopes, delete your previously saved credentials
-# at ~/.credentials/gmail-python-quickstart.json
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 CLIENT_SECRET_FILE = 'notifier/client_secret.json'
 APPLICATION_NAME = 'Docker'
@@ -45,17 +43,6 @@ class Gmail(Resource):
         return credentials
 
     def create_message(self, sender, to, subject, message_text):
-        """Create a message for an email.
-
-    Args:
-        sender: Email address of the sender.
-        to: Email address of the receiver.
-        subject: The subject of the email message.
-        message_text: The text of the email message.
-
-    Returns:
-        An object containing a base64url encoded email object.
-    """
         message = MIMEText(message_text)
         message['to'] = to
         message['from'] = sender
@@ -71,5 +58,5 @@ class Gmail(Resource):
         try:
             message = service.users().messages().send(userId="me", body=message).execute()
         except errors.HttpError, error:
-            return {"Error": "%s" % error}, 400
-        return message
+            return ["Error %s" % error], 400
+        return [message], 200

@@ -13,4 +13,4 @@ class Sms(Resource):
         data = urllib.urlencode(data)
         theUrl = "https://api.tropo.com/1.0/sessions?action=create&token=%s&%s" % (secrets.SMS_TOKEN, data)
         response = urllib2.urlopen(theUrl, data=data)
-        return response.read(), response.getcode()
+        return [response.read()], response.getcode()

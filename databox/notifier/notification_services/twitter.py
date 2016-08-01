@@ -16,4 +16,4 @@ class Twitter(Resource):
         token =  oauth2.Token(key=secrets.TWITTER_ACCESS_TOKEN, secret=secrets.TWITTER_ACCESS_TOKEN_SECRET)
         client = oauth2.Client(consumer, token)
         resp, content = client.request(twitter_url, method="POST", body="", headers=None)
-        return content, resp
+        return [content], resp
