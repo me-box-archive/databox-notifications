@@ -21,7 +21,8 @@ CLIENT_SECRET_FILE = 'notifier/client_secret.json'
 APPLICATION_NAME = 'Docker'
 
 parser = reqparse.RequestParser()
-parser.add_argument('to', required=True)
+# regex for email from http://www.regular-expressions.info/email.html
+parser.add_argument('to', required=True, type=inputs.regex('^[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$'))
 parser.add_argument('body', required=True)
 
 class Gmail(Resource):
