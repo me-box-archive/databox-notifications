@@ -1,10 +1,10 @@
 import oauth2
 import urllib
 from notifier import secrets
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, inputs
 
 parser = reqparse.RequestParser()
-parser.add_argument('to', required=True)
+parser.add_argument('to', required=True, type=inputs.regex('^@?[a-z0-9_]{1,15}$'))
 parser.add_argument('body', required=True)
 class Twitter(Resource):
     def post(self):

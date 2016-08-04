@@ -1,6 +1,7 @@
 import gntp.notifier
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, inputs
 
+re = '(?:^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))$'
 parser = reqparse.RequestParser()
 parser.add_argument('to', required=True)
 parser.add_argument('body', required=True)

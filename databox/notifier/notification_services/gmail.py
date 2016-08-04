@@ -8,7 +8,7 @@ import base64
 from email.mime.text import MIMEText
 import os
 import sys
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, inputs
 
 try:
     import argparse
