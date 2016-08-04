@@ -2,6 +2,7 @@ import urllib2
 import urllib
 from notifier import secrets
 from flask_restful import Resource, reqparse
+from twilio.rest import TwilioRestClient
 
 parser = reqparse.RequestParser()
 parser.add_argument('to', required=True)

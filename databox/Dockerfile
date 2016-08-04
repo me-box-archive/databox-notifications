@@ -5,6 +5,7 @@ RUN pip install oauth2
 RUN pip install Flask
 RUN pip install flask-restful
 RUN pip install gntp
+RUN pip install twilio
 
 ADD . /code
 WORKDIR /code
