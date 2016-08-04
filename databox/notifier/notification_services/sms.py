@@ -7,11 +7,9 @@ from twilio.rest import TwilioRestClient
 parser = reqparse.RequestParser()
 parser.add_argument('to', required=True)
 parser.add_argument('body', required=True)
+client = TwilioRestClient(secrets.TWILIO_SID, secrets.TWILIO_TOKEN)
 class Sms(Resource):
     def post(self):
         post_data = parser.parse_args()
-        data = {"numberToDial": post_data['to'], "message": post_data['body']}
-        data = urllib.urlencode(data)
-        theUrl = "https://api.tropo.com/1.0/sessions?action=create&token=%s&%s" % (secrets.SMS_TOKEN, data)
-        response = urllib2.urlopen(theUrl, data=data)
-        return [response.read()], response.getcode()
+        message = client.messages.create(to=post_data['to'], from_=secrets.TWILIO_NUMBER, body=post_data['body'])
+        return message.status
