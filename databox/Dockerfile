@@ -1,14 +1,11 @@
 from python:2.7
 
-RUN pip install --upgrade google-api-python-client
-RUN pip install oauth2
-RUN pip install Flask
-RUN pip install flask-restful
-RUN pip install gntp
-RUN pip install twilio
+RUN apt-get update && apt-get install -y libsodium13 libsodium-dev
 
 ADD . /code
 WORKDIR /code
+
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
