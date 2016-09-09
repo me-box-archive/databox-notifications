@@ -22,7 +22,7 @@ APPLICATION_NAME = 'Docker'
 
 parser = reqparse.RequestParser()
 # regex for email from http://www.regular-expressions.info/email.html
-parser.add_argument('to', required=True, type=inputs.regex('^[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$'))
+parser.add_argument('to', required=True, type=inputs.regex('^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9-]{1,63}\.){1,125}[A-Za-z]{2,63}$'))
 parser.add_argument('body', required=True)
 
 class Gmail(Resource):
@@ -59,5 +59,5 @@ class Gmail(Resource):
         try:
             message = service.users().messages().send(userId="me", body=message).execute()
         except errors.HttpError, error:
-            return ["Error %s" % error], 400
-        return [message], 200
+            return {"message": error}, 400
+        return {"ok": true}, 200
