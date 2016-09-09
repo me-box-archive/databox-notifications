@@ -59,5 +59,5 @@ class Gmail(Resource):
         try:
             message = service.users().messages().send(userId="me", body=message).execute()
         except errors.HttpError, error:
-            return ["Error %s" % error], 400
-        return [message], 200
+            return {"message": error}, 400
+        return {"ok": true}, 200
