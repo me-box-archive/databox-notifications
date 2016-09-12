@@ -12,11 +12,6 @@ from pymacaroons import Macaroon, Verifier
 
 api = Api(app)
 
-@app.before_request
-def only_json():
-    if not request.is_json:
-        abort(400)
-
 api.add_resource(Gmail, "/notify/email")
 api.add_resource(Growl, "/notify/growl")
 api.add_resource(Push, "/notify/push")
