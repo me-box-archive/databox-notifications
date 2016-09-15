@@ -18,7 +18,9 @@ international numbers but the validator assumes a UK number at present.
 Push notifications and chrome notifications cannot currently be sent because there
 is no way of transferring firebase registration tokens to this service to be able to
 send notifications to devices. The source code for an Android app and the chrome
-extension are not currently available in this repository.
+extension are in separate repositories.
+
+Push notifications can be tested for the android app if run with ADB connected to get the registration token. The token can then be added to a HTTP request, in the JSON body.
 
 ## Installation
 
