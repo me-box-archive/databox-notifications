@@ -24,4 +24,14 @@ class Push(Resource):
 
         req = urllib2.Request(firebase_url, data=json.dumps(data), headers={"Authorization": "key=%s" % (secrets.FIREBASE_SERVER_KEY), "Content-Type": "application/json"})
         response = urllib2.urlopen(req)
-        return [response.read()], response.getcode()
+        response_data = json.loads(response.read())
+        print response_data
+        response_string = "OK"
+        response_code = 200
+        if response.getcode() != 200:
+            response_string = response_data
+            response_code = response.getcode()
+        elif int(response_data["failure"]) > 0:
+            response_string = response_data
+            response_code = 500
+        return response_string, response_code

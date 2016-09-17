@@ -15,5 +15,9 @@ class Twitter(Resource):
         consumer = oauth2.Consumer(key=secrets.TWITTER_CONSUMER_KEY, secret=secrets.TWITTER_CONSUMER_SECRET)
         token =  oauth2.Token(key=secrets.TWITTER_ACCESS_TOKEN, secret=secrets.TWITTER_ACCESS_TOKEN_SECRET)
         client = oauth2.Client(consumer, token)
-        resp, content = client.request(twitter_url, method="POST", body="", headers=None)
-        return [content], resp
+        response, content = client.request(twitter_url, method="POST", body="", headers=None)
+        response_text = "OK"
+        status_code = int(response['status'])
+        if status_code != 200:
+            response_text = content
+        return response_text, status_code
