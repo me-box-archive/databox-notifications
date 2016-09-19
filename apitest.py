@@ -42,5 +42,9 @@ class NotifierTest(unittest.TestCase):
         self.assertEqual(rv.status_code, 200)
         self.assertEqual(rv.data, '"OK"\n')
 
+    def test_growl_not_running(self):
+        rv = self.app.post('/notify/growl', data=json.dumps(dict(to="128.243.19.209", body='unit test')), content_type="application/json")
+        self.assertEqual(rv.status_code, 400)
+
 if __name__ == '__main__':
     unittest.main()
