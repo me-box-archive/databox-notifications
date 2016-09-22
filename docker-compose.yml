@@ -10,4 +10,4 @@ services:
         links:
             - databox_notifier_mysql
         ports:
-            - "5000:5000
+            - "5000:5000"
