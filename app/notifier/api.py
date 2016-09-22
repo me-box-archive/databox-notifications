@@ -6,6 +6,7 @@ from notification_services.push import Push
 from notification_services.growl import Growl
 from notification_services.gmail import Gmail
 from status import Status
+from options import Options
 from notifier import app
 import os
 from pymacaroons import Macaroon, Verifier
@@ -18,3 +19,4 @@ api.add_resource(Push, "/notify/push")
 api.add_resource(Sms, "/notify/sms")
 api.add_resource(Twitter, "/notify/twitter")
 api.add_resource(Status, "/status")
+api.add_resource(Options, "/options")
