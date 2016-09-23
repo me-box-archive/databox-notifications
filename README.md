@@ -37,13 +37,6 @@ for generating the required files soon.
 Twilio needs a UK phone number creating which **must** support SMS. In trial
 mode, numbers that should receive messages must also be verified by Twilio.
 
-Many of the accounts used here were created for Homework Router notifications. I
-can supply the secrets.py file with the correct details for these accounts if
-required.
-
-The app requires the MySQL python connector. Download the most recent version for Ubuntu from [http://dev.mysql.com/downloads/connector/python/](http://dev.mysql.com/downloads/connector/python/).
-Place the `.deb` file in the app directory.
-
 Assuming accounts are configured correctly, docker build should configure everything.
 The app currently listens on port 5000. This must be forwarded to a port on the host.
 This will be adapted to use a shell script and environment variables at some point.

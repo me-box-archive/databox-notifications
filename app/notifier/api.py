@@ -8,6 +8,7 @@ from endpoints.gmail import Gmail
 from endpoints.status import Status
 from endpoints.options import Options
 import os
+import db
 from pymacaroons import Macaroon, Verifier
 
 app = Flask(__name__)
