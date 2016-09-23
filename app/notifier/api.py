@@ -1,16 +1,17 @@
-from flask import request, abort
+from flask import request, abort, Flask
 from flask_restful import Resource, Api
-from notification_services.twitter import Twitter
-from notification_services.sms import Sms
-from notification_services.push import Push
-from notification_services.growl import Growl
-from notification_services.gmail import Gmail
-from status import Status
-from options import Options
-from notifier import app
+from endpoints.twitter import Twitter
+from endpoints.sms import Sms
+from endpoints.push import Push
+from endpoints.growl import Growl
+from endpoints.gmail import Gmail
+from endpoints.status import Status
+from endpoints.options import Options
 import os
 from pymacaroons import Macaroon, Verifier
 
+app = Flask(__name__)
+app.config['BUNDLE_ERRORS'] = True
 api = Api(app)
 
 api.add_resource(Gmail, "/notify/email")
