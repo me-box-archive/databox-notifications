@@ -11,3 +11,8 @@ services:
             - databox_notifier_mysql
         ports:
             - "5000:5000"
+        environment:
+            - MYSQL_ROOT_PASSWORD=databox
+            - MYSQL_DATABASE=databox_notifications
+            - MYSQL_USER=databox
+            - MYSQL_PASSWORD=databox
