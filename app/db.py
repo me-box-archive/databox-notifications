@@ -8,4 +8,7 @@ config = {
     'database': os.getenv("MYSQL_DATABASE")
 }
 cnx = mysql.connector.connect(**config)
-cnx.close()
+
+
+def get():
+    return cnx;
