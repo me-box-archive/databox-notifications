@@ -7,5 +7,5 @@ config = {
     'host': "databox_notifier_mysql",
     'database': os.getenv("MYSQL_DATABASE")
 }
-cnx = mysql.connector.connect(**config)
-cnx.close()
+#cnx = mysql.connector.connect(**config)
+#cnx.close()

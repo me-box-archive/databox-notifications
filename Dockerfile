@@ -2,9 +2,9 @@ from python:2.7
 
 RUN apt-get update && apt-get install -y libsodium13 libsodium-dev
 
-ADD . /code
+ADD ./app /app
 
-WORKDIR /code
+WORKDIR /app
 
 RUN pip install -r requirements.txt
 
