@@ -8,6 +8,8 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
+LABEL databox.type="notifications"
+
 EXPOSE 8080
 
 CMD ["python", "startup.py", "--noauth_local_webserver"]
